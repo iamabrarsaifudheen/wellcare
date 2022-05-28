@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wellcare/services/auth.dart';
 import 'package:wellcare/widgets/button.dart';
 import 'package:wellcare/widgets/text_box.dart';
 
@@ -12,6 +13,12 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+   @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -85,7 +92,19 @@ class _SignUpState extends State<SignUp> {
                         SizedBox(height: height / 20),
                         Button(
                           text: "SUBMIT",
-                          onPressed: () async {},
+                          onPressed: () async {
+                               if (_formKey.currentState!.validate()) {
+                              await AuthService().registerWithEmailAndPassword(
+                                  _emailController.text.trim(),
+                                  _passwordController.text.trim());
+
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('Welcome')),
+                              );
+                          
+                            }
+
+                          },
                         ),
                         Center(
                           child: TextButton(

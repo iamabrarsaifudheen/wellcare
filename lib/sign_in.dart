@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wellcare/services/auth.dart';
 import 'package:wellcare/widgets/button.dart';
 import 'package:wellcare/widgets/text_box.dart';
 
@@ -64,7 +65,29 @@ class _SignInState extends State<SignIn> {
                       },
                       type: 'password'),
                   SizedBox(height: height / 20),
-                  Button(onPressed: () {}, text: 'Sign In'),
+                  Button(onPressed: () async{
+                       if (_formKey.currentState!.validate()) {
+                              dynamic result = await AuthService()
+                                  .signInWithEmailAndPassword(
+                                      _emailController.text.trim(),
+                                      _passwordController.text.trim());
+                            
+
+                              // if (FirebaseAuth.instance.currentUser != null) {
+                              //   print(FirebaseAuth.instance.currentUser?.uid);
+                              //   Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => const Home()),
+                              //   );
+                              // }
+
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text("Welcome")),
+                              );
+                            }
+
+                  }, text: 'Sign In'),
                   Center(
                     child: TextButton(
                         onPressed: () {
