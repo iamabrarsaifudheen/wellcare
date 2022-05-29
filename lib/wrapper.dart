@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wellcare/authenticate.dart';
 import 'package:wellcare/connect.dart';
+import 'package:wellcare/custom_bottom_navigation.dart';
 import 'package:wellcare/models/user.dart';
 
 class Wrapper extends StatelessWidget {
@@ -17,7 +18,7 @@ class Wrapper extends StatelessWidget {
     } else {
       print(user.uid);
       print("user sign in");
-      return  Connect();
+      return CustomBottomNavigator();
       // home screen with the user as argument for easier access in the future
     }
   }

@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wellcare/connect_card.dart';
 import 'package:wellcare/models/connect_card_details.dart';
+import 'package:wellcare/models/user_details.dart';
 import 'package:wellcare/services/auth.dart';
 
 class Connect extends StatefulWidget {
@@ -11,14 +14,16 @@ class Connect extends StatefulWidget {
 }
 
 class _ConnectState extends State<Connect> {
+
+
+
+         
+
   @override
   Widget build(BuildContext context) {
-    final user = ConnectCardDetails(
-        place: "Kochi",
-        age: '20',
-        urlImage:
-            'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
-        name: 'Steffen');
+    
+   
+   
 
     return Container(
       decoration: BoxDecoration(
@@ -33,9 +38,7 @@ class _ConnectState extends State<Connect> {
         body: SafeArea(
             child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Container(
-            child: ConnectCard(connectCardDetails: user),
-          ),
+          child: ConnectCard(),
         )),
       ),
     );

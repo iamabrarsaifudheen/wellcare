@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wellcare/details_service_provider.dart';
+import 'package:wellcare/details_service_seeker.dart';
 import 'package:wellcare/services/auth.dart';
 import 'package:wellcare/widgets/button.dart';
 import 'package:wellcare/widgets/text_box.dart';
@@ -13,12 +15,13 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-   @override
+  @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -93,17 +96,40 @@ class _SignUpState extends State<SignUp> {
                         Button(
                           text: "SUBMIT",
                           onPressed: () async {
-                               if (_formKey.currentState!.validate()) {
-                              await AuthService().registerWithEmailAndPassword(
-                                  _emailController.text.trim(),
-                                  _passwordController.text.trim());
+                            if (_formKey.currentState!.validate()) {
+                              if (selectedType == 'Looking for work') {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            DetailsServiceProvider(
+                                                type: selectedType.toString(),
+                                                name: _usernameController.text,
+                                                email: _emailController.text
+                                                    .trim(),
+                                                password: _passwordController
+                                                    .text
+                                                    .trim())));
+                              } else {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            DetailsServiceSeeker(
+                                                name: _usernameController.text,
+                                                type: selectedType.toString(),
+                                                email: _emailController.text
+                                                    .trim(),
+                                                password: _passwordController
+                                                    .text
+                                                    .trim())));
+                              }
 
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Welcome')),
+                                const SnackBar(
+                                    content: Text('Few More Details')),
                               );
-                          
                             }
-
                           },
                         ),
                         Center(

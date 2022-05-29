@@ -7,7 +7,36 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1050353191490:android:2beffff33149a234e0bbdb",
+        "mobilesdk_app_id": "1:1050353191490:android:e371c8a595517bebe0bbdb",
+        "android_client_info": {
+          "package_name": "com.example.flyer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1050353191490-opuaairfajd3omllf049rov84653ve4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzrcgrmoLcA1Rg6vKOI74a11IfwFCI_7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1050353191490-opuaairfajd3omllf049rov84653ve4h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1050353191490:android:ea9bef787ed85921e0bbdb",
         "android_client_info": {
           "package_name": "com.example.wellcare"
         }

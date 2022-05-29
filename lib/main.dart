@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:wellcare/authenticate.dart';
 import 'package:wellcare/connect.dart';
 import 'package:wellcare/connect_card.dart';
+import 'package:wellcare/custom_bottom_navigation.dart';
 import 'package:wellcare/services/auth.dart';
 import 'package:wellcare/sign_in.dart';
 import 'package:wellcare/sign_up.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
             fontFamily: 'Montserrat',
             primaryColor: const Color(0xff1E3E72),
           ),
-          home: Connect()),
+          home: Wrapper()),
     );
   }
 }
